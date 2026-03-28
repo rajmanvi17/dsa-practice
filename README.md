@@ -22,6 +22,7 @@ Solve 150+ DSA problems and become placement-ready.
 ## 📌 Platforms
 - LeetCode
 - GeeksforGeeks
+- ChatGpt
 
 ## 💡 Approach
 Each problem includes:
