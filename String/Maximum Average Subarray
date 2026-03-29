@@ -1,0 +1,23 @@
+var findMaxAverage = function(nums, k) {
+
+    let windowSum = 0;
+
+    // step 1: first window
+    for(let i = 0; i < k; i++) {
+        windowSum += nums[i];
+    }
+
+    let maxSum = windowSum;
+
+    // step 2: slide window
+    for(let i = k; i < nums.length; i++) {
+        windowSum += nums[i];       // add
+        windowSum -= nums[i - k];   // remove
+
+        if(windowSum > maxSum) {
+            maxSum = windowSum;
+        }
+    }
+
+    return maxSum / k;
+};
