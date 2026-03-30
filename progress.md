@@ -8,3 +8,8 @@ Day 2: 28/03/26
 Day 3: 29/03/26
 - Two Pointer Pattern
 - Maximum Subarray
+
+
+Day 4: 23/03/26
+- Hashing
+- Prefix Sum
