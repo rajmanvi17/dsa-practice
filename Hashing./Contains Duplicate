@@ -1,0 +1,24 @@
+var containsDuplicate = function(nums) {
+
+    let set = new Set();
+
+    for(let i = 0; i < nums.length; i++) {
+
+        if(set.has(nums[i])) {
+            return true;  // duplicate mil gaya 💀
+        }
+
+        set.add(nums[i]);
+    }
+
+    return false; // koi duplicate nahi mila
+};
+
+
+//Steps-
+//Ek empty set banao
+//Array traverse karo
+//Har element ke liye:
+//Agar set me already hai → return true
+//warna set me add karo
+// nd tak repeat nahi mila → return false
