@@ -1,0 +1,28 @@
+var frequencySort = function(nums) {
+    let freq = {};
+
+    // Step 1: Count frequency
+    for (let num of nums) {
+        freq[num] = (freq[num] || 0) + 1;
+    }
+
+    // Step 2: Sort based on rules
+    nums.sort((a, b) => {
+        if (freq[a] === freq[b]) {
+            return b - a; // value descending
+        }
+        return freq[a] - freq[b]; // frequency ascending
+    });
+
+    return nums;
+};
+
+
+
+- Steps:
+
+1. Frequency count karo (map me store)
+2. Array sort karo:
+   Frequency ↑ (small first)
+   Same freq → value ↓ (big first)
+3. Sorted array return
