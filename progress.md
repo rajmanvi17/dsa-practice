@@ -13,3 +13,6 @@ Day 3: 29/03/26
 Day 4: 23/03/26
 - Hashing
 - Prefix Sum
+
+Day 5: 24/02/26
+-Array-Sort array by increasing frequency
