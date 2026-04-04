@@ -10,9 +10,16 @@ Day 3: 29/03/26
 - Maximum Subarray
 
 
-Day 4: 23/03/26
+Day 4: 30/03/26
 - Hashing
 - Prefix Sum
 
-Day 5: 24/02/26
+Day 5: 31/02/26
 -Array-Sort array by increasing frequency
+
+Day 6,7,8 - AB
+
+Day 9: 04/04/26
+-running sum (Array)
+-design hashmap (Hashing)
+-rotate string (String)
