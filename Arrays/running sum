@@ -1,0 +1,55 @@
+var sumEvenAfterQueries = function(nums, queries) {
+    let evenSum = 0;
+    
+    // Step 1: initial even sum
+    for (let num of nums) {
+        if (num % 2 === 0) evenSum += num;
+    }
+    
+    let result = [];
+    
+    // Step 2: process queries
+    for (let [val, idx] of queries) {
+        
+        // remove old even value
+        if (nums[idx] % 2 === 0) {
+            evenSum -= nums[idx];
+        }
+        
+        // update value
+        nums[idx] += val;
+        
+        // add new even value
+        if (nums[idx] % 2 === 0) {
+            evenSum += nums[idx];
+        }
+        
+        result.push(evenSum);
+    }
+    
+    return result;
+};
+
+
+
+Sum of Even Numbers After Queries – Notes
+Pattern: Array + Simulation
+Technique: Running Sum (Incremental Update)
+Key Idea
+Maintain a running sum of even numbers
+Update only the affected index for each query
+Steps
+Compute initial sum of even numbers
+For each query:
+If current value is even, subtract it from sum
+Update the value at given index
+If new value is even, add it to sum
+Store current sum in result
+Code Idea
+Track evenSum and update per query instead of recalculating
+Complexity
+Time: O(n + q)
+Space: O(1) (excluding result)
+Final Rule
+Do not recompute entire sum after each query
+Update only the changed element’s contribution
