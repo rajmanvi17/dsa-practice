@@ -1,0 +1,38 @@
+var reorganizeString = function(s) {
+    let freq = {};
+
+    // count frequency
+    for (let ch of s) {
+        freq[ch] = (freq[ch] || 0) + 1;
+    }
+
+    // max heap using array (sort each time)
+    let heap = Object.entries(freq);
+
+    let result = "";
+
+    while (heap.length > 0) {
+        heap.sort((a, b) => b[1] - a[1]);
+
+        let [char1, count1] = heap.shift();
+
+        if (result.length > 0 && result[result.length - 1] === char1) {
+            if (heap.length === 0) return "";
+
+            let [char2, count2] = heap.shift();
+
+            result += char2;
+            count2--;
+
+            if (count2 > 0) heap.push([char2, count2]);
+            heap.push([char1, count1]);
+        } else {
+            result += char1;
+            count1--;
+
+            if (count1 > 0) heap.push([char1, count1]);
+        }
+    }
+
+    return result;
+};
