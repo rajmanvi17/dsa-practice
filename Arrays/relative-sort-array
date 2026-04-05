@@ -1,0 +1,33 @@
+var relativeSortArray = function(arr1, arr2) {
+    let freq = {};
+
+    // Step 1: count frequency of arr1
+    for (let num of arr1) {
+        freq[num] = (freq[num] || 0) + 1;
+    }
+
+    let result = [];
+
+    // Step 2: place elements as per arr2 order
+    for (let num of arr2) {
+        while (freq[num] > 0) {
+            result.push(num);
+            freq[num]--;
+        }
+        delete freq[num];
+    }
+
+    // Step 3: handle remaining elements
+    let remaining = [];
+    for (let key in freq) {
+        while (freq[key] > 0) {
+            remaining.push(Number(key));
+            freq[key]--;
+        }
+    }
+
+    // sort remaining elements
+    remaining.sort((a, b) => a - b);
+
+    return result.concat(remaining);
+};
