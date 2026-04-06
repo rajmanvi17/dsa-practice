@@ -1,0 +1,21 @@
+https://leetcode.com/problems/move-zeroes/submissions/1970590925
+
+# Problem - Move zeroes
+
+var moveZeroes = function(nums) {
+    let index = 0;
+
+    // move non-zero elements forward
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== 0) {
+            nums[index] = nums[i];
+            index++;
+        }
+    }
+
+    // fill remaining with zeros
+    while (index < nums.length) {
+        nums[index] = 0;
+        index++;
+    }
+};
