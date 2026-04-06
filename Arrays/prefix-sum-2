@@ -1,0 +1,31 @@
+https://leetcode.com/problems/find-the-highest-altitude/submissions/1970586302
+
+var largestAltitude = function(gain) {
+    let current = 0;
+    let maxAlt = 0;
+
+    for (let g of gain) {
+        current += g;
+        maxAlt = Math.max(maxAlt, current);
+    }
+
+    return maxAlt;
+};
+
+
+Problem
+Start at altitude 0
+Given gain[i] = change in altitude
+Find the highest altitude reached
+
+-Key Idea
+Keep adding gains to track current altitude
+Track maximum altitude during traversal
+-Steps
+Initialize:
+current = 0
+maxAlt = 0
+Traverse gain:
+current += gain[i]
+Update maxAlt = max(maxAlt, current)
+Return maxAlt
