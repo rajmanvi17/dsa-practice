@@ -1,0 +1,17 @@
+https://leetcode.com/problems/reverse-words-in-a-string/submissions/1971817292
+
+var reverseWords = function(s) {
+    return s
+        .trim()
+        .split(" ")
+        .filter(word => word.length > 0)
+        .reverse()
+        .join(" ");
+};
+
+Steps
+Trim string to remove leading/trailing spaces
+Split string by spaces
+Filter out empty strings (caused by multiple spaces)
+Reverse the list of words
+Join with single space
