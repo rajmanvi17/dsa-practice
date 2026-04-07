@@ -1,0 +1,37 @@
+https://leetcode.com/problems/continuous-subarray-sum/submissions/1971811403
+
+Problem - Continuous subarray sum
+var checkSubarraySum = function(nums, k) {
+    let map = new Map();
+    map.set(0, -1);
+
+    let sum = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        sum += nums[i];
+        let rem = sum % k;
+
+        if (map.has(rem)) {
+            if (i - map.get(rem) >= 2) {
+                return true;
+            }
+        } else {
+            map.set(rem, i);
+        }
+    }
+
+    return false;
+};
+
+
+Steps-
+Use a map to store: remainder → first index
+Initialize map with {0: -1}
+Maintain running sum
+For each index:
+sum += nums[i]
+rem = sum % k
+If rem already exists in map:
+Check if subarray length ≥ 2
+Else:
+Store remainder with index
