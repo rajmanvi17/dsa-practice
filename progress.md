@@ -32,3 +32,7 @@ Day-10: 05/04/26
 Day-11: 06/07/26
 - Continuous Sub array 
 - Reverse-world-in-string
+
+Day-12: 07/04/26
+- Trapping Rain Water
+- Roman to integer
