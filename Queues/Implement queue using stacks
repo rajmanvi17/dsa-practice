@@ -1,0 +1,49 @@
+https://leetcode.com/problems/implement-queue-using-stacks/submissions/1973796516
+
+Pattern- Design
+
+Code-
+var findErrorNums = function(nums) {
+    let n = nums.length;
+    let freq = new Array(n + 1).fill(0);
+
+    for (let num of nums) {
+        freq[num]++;
+    }
+
+    let duplicate = -1, missing = -1;
+
+    for (let i = 1; i <= n; i++) {
+        if (freq[i] === 2) duplicate = i;
+        if (freq[i] === 0) missing = i;
+    }
+
+    return [duplicate, missing];
+};
+
+
+Problem-
+Implement FIFO queue using only stacks
+Support: push, pop, peek, empty
+
+Key Idea-
+Use two stacks:
+inStack → for push
+outStack → for pop/peek
+
+Concept-
+Push → always go into inStack
+Pop/Peek → take from outStack
+If outStack empty → transfer all from inStack
+
+Steps-
+push(x)
+Push into inStack
+pop()
+If outStack empty:
+Move all elements from inStack → outStack
+Pop from outStack
+peek()
+Same as pop but return top without removing
+empty()
+Return true if both stacks are empty
