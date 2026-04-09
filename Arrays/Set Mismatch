@@ -1,0 +1,47 @@
+https://leetcode.com/problems/set-mismatch/submissions/1973787642
+
+Pattern - Cyclic Sort
+
+Code-
+
+var findErrorNums = function(nums) {
+    let n = nums.length;
+    let freq = new Array(n + 1).fill(0);
+
+    for (let num of nums) {
+        freq[num]++;
+    }
+
+    let duplicate = -1, missing = -1;
+
+    for (let i = 1; i <= n; i++) {
+        if (freq[i] === 2) duplicate = i;
+        if (freq[i] === 0) missing = i;
+    }
+
+    return [duplicate, missing];
+};
+
+
+
+
+Problem-
+Array contains numbers from 1 to n
+One number is duplicated
+One number is missing
+Return: [duplicate, missing]
+Pattern
+Hashing / Counting
+Key Idea
+Track frequency of each number
+Find:
+number with freq = 2 → duplicate
+number with freq = 0 → missing
+
+-Steps
+Create frequency array of size n+1
+Traverse nums:
+Increment count for each number
+Traverse 1 to n:
+If freq[i] == 2 → duplicate
+If freq[i] == 0 → missing
