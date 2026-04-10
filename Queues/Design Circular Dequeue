@@ -1,0 +1,89 @@
+https://leetcode.com/problems/design-circular-deque/submissions/1974673190
+
+pattern - Design
+
+Code-
+
+class MyCircularDeque {
+    constructor(k) {
+        this.arr = new Array(k);
+        this.k = k;
+        this.front = 0;
+        this.rear = -1;
+        this.size = 0;
+    }
+
+    insertFront(value) {
+        if (this.isFull()) return false;
+
+        if (this.size === 0) {
+            this.front = 0;
+            this.rear = 0;
+        } else {
+            this.front = (this.front - 1 + this.k) % this.k;
+        }
+
+        this.arr[this.front] = value;
+        this.size++;
+        return true;
+    }
+
+    insertLast(value) {
+        if (this.isFull()) return false;
+
+        if (this.size === 0) {
+            this.front = 0;
+            this.rear = 0;
+        } else {
+            this.rear = (this.rear + 1) % this.k;
+        }
+
+        this.arr[this.rear] = value;
+        this.size++;
+        return true;
+    }
+
+    deleteFront() {
+        if (this.isEmpty()) return false;
+
+        if (this.size === 1) {
+            this.front = 0;
+            this.rear = -1;
+        } else {
+            this.front = (this.front + 1) % this.k;
+        }
+
+        this.size--;
+        return true;
+    }
+
+    deleteLast() {
+        if (this.isEmpty()) return false;
+
+        if (this.size === 1) {
+            this.front = 0;
+            this.rear = -1;
+        } else {
+            this.rear = (this.rear - 1 + this.k) % this.k;
+        }
+
+        this.size--;
+        return true;
+    }
+
+    getFront() {
+        return this.isEmpty() ? -1 : this.arr[this.front];
+    }
+
+    getRear() {
+        return this.isEmpty() ? -1 : this.arr[this.rear];
+    }
+
+    isEmpty() {
+        return this.size === 0;
+    }
+
+    isFull() {
+        return this.size === this.k;
+    }
+}
