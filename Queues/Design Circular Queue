@@ -1,0 +1,52 @@
+https://leetcode.com/problems/design-circular-queue/submissions/1974668424
+
+Pattern - design
+
+Code-
+
+class MyCircularQueue {
+    constructor(k) {
+        this.queue = new Array(k);
+        this.k = k;
+        this.front = 0;
+        this.rear = -1;
+        this.size = 0;
+    }
+
+    enQueue(value) {
+        if (this.isFull()) return false;
+
+        this.rear = (this.rear + 1) % this.k;
+        this.queue[this.rear] = value;
+        this.size++;
+        return true;
+    }
+
+    deQueue() {
+        if (this.isEmpty()) return false;
+
+        this.front = (this.front + 1) % this.k;
+        this.size--;
+        return true;
+    }
+
+    Front() {
+        return this.isEmpty() ? -1 : this.queue[this.front];
+    }
+
+    Rear() {
+        return this.isEmpty() ? -1 : this.queue[this.rear];
+    }
+
+    isEmpty() {
+        return this.size === 0;
+    }
+
+    isFull() {
+        return this.size === this.k;
+    }
+}
+
+
+
+
