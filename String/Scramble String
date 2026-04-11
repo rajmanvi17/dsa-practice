@@ -1,0 +1,51 @@
+https://leetcode.com/problems/scramble-string/submissions/1975616581
+
+Pattern-
+Recursion + Memoization (DP)
+
+Code-
+
+var isScramble = function(s1, s2) {
+    let memo = new Map();
+
+    function helper(a, b) {
+        let key = a + "," + b;
+        if (memo.has(key)) return memo.get(key);
+
+        if (a === b) return true;
+
+        if (a.length !== b.length) return false;
+
+        // Pruning: check character frequency
+        let sortedA = a.split('').sort().join('');
+        let sortedB = b.split('').sort().join('');
+        if (sortedA !== sortedB) return false;
+
+        let n = a.length;
+
+        for (let i = 1; i < n; i++) {
+            // no swap
+            if (
+                helper(a.slice(0, i), b.slice(0, i)) &&
+                helper(a.slice(i), b.slice(i))
+            ) {
+                memo.set(key, true);
+                return true;
+            }
+
+            // swap
+            if (
+                helper(a.slice(0, i), b.slice(n - i)) &&
+                helper(a.slice(i), b.slice(0, n - i))
+            ) {
+                memo.set(key, true);
+                return true;
+            }
+        }
+
+        memo.set(key, false);
+        return false;
+    }
+
+    return helper(s1, s2);
+};
