@@ -1,0 +1,86 @@
+https://leetcode.com/problems/design-hashset/submissions/1975608233
+
+class MyHashSet {
+    constructor() {
+        this.size = 1000;
+        this.set = new Array(this.size).fill(null).map(() => []);
+    }
+
+    hash(key) {
+        return key % this.size;
+    }
+
+    add(key) {
+        let idx = this.hash(key);
+        let bucket = this.set[idx];
+
+        if (!bucket.includes(key)) {
+            bucket.push(key);
+        }
+    }
+
+    contains(key) {
+        let idx = this.hash(key);
+        return this.set[idx].includes(key);
+    }
+
+    remove(key) {
+        let idx = this.hash(key);
+        let bucket = this.set[idx];
+
+        let index = bucket.indexOf(key);
+        if (index !== -1) {
+            bucket.splice(index, 1);
+        }
+    }
+}
+
+
+
+Pattern-
+Hashing + Buckets (Separate Chaining)
+  
+Key Idea-
+Use an array of buckets
+Each bucket stores keys
+Use a hash function to map key → index
+  
+Hash Function-
+index = key % size
+  
+Data Structure-
+Array of lists
+Each list stores unique keys
+  
+Operations-
+add(key):
+Find bucket using hash
+If key not present → insert
+  
+contains(key):
+Find bucket
+Return true if key exists, else false
+  
+remove(key):
+Find bucket
+Remove key if present
+  
+Steps-
+1. Initialize array with empty lists
+2. For each operation:
+ - Compute index using hash
+ - Perform operation in that bucket
+  
+Complexity-
+Time:
+add: O(1) average
+contains: O(1) average
+remove: O(1) average
+Worst Case:
+O(n) (all keys in same bucket)
+  
+Final Rule-
+Map keys to indices using hash function
+Handle collisions using buckets
+Ensure no duplicate keys stored
+
