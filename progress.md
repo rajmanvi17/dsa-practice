@@ -44,6 +44,10 @@ Day-14: 09/04/26
 - Design Circular Queue
 - Design Circular Queue
 
-ay-15: 10/04/26
+Day-15: 10/04/26
 - Design Hashset
 - Scramble String
+
+Day-16: 11/04/26 (Pattern - Greedy )
+- Patching Array
+- Wildcard Matching
