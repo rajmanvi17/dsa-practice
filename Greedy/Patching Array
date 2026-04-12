@@ -1,0 +1,46 @@
+https://leetcode.com/problems/patching-array/submissions/1976606176
+
+Pattern- Greedy
+
+var minPatches = function(nums, n) {
+    let miss = 1;
+    let i = 0;
+    let patches = 0;
+
+    while (miss <= n) {
+        if (i < nums.length && nums[i] <= miss) {
+            miss += nums[i];
+            i++;
+        } else {
+            miss += miss;
+            patches++;
+        }
+    }
+
+    return patches;
+};
+
+
+
+
+Key Idea
+Track smallest missing number miss
+Range [1, miss) is currently covered
+If next number ≤ miss → extend range
+Else → patch with miss
+Core Insight
+Adding miss doubles the reachable range
+New range becomes [1, 2*miss)
+Steps
+Initialize:
+miss = 1
+i = 0
+patches = 0
+While miss <= n:
+If i < nums.length and nums[i] <= miss:
+miss += nums[i]
+i++
+Else:
+Add patch = miss
+miss += miss
+patches++
