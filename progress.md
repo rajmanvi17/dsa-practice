@@ -51,3 +51,8 @@ Day-15: 10/04/26
 Day-16: 11/04/26 (Pattern - Greedy )
 - Patching Array
 - Wildcard Matching
+
+Day-17: 12/04/26 (AB)
+
+Day-18: 13/04/26 (Pattern - Greedy  + Sorting )
+- Queue Reconstruction by length
