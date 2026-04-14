@@ -1,0 +1,38 @@
+https://leetcode.com/problems/queue-reconstruction-by-height/submissions/1978485601
+
+Pattern- Greedy + Sorting
+
+code-
+
+var reconstructQueue = function(people) {
+    // Step 1: sort
+    people.sort((a, b) => {
+        if (b[0] === a[0]) return a[1] - b[1];
+        return b[0] - a[0];
+    });
+
+    let result = [];
+
+    // Step 2: insert
+    for (let person of people) {
+        result.splice(person[1], 0, person);
+    }
+
+    return result;
+};
+
+
+
+Key Idea-
+Place taller people first
+For same height → smaller k first
+Insert at index = k
+
+Steps-
+
+1. Sort people:
+2. Height descending
+  -If same height → k ascending
+  -Initialize empty result array
+3.Traverse sorted array:
+ -Insert each person at index k
