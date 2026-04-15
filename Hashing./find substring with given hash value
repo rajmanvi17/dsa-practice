@@ -1,0 +1,70 @@
+https://leetcode.com/problems/find-substring-with-given-hash-value/submissions/1979310514
+
+Pattern- Rolling Hash (Rabin-Karp)
+
+Code-
+
+var subStrHash = function(s, power, modulo, k, hashValue) {
+    let n = s.length;
+    let p = BigInt(power);
+    let mod = BigInt(modulo);
+    let target = BigInt(hashValue);
+
+    let hash = 0n;
+    let powerK = 1n;
+    let resultIndex = 0;
+
+    // compute p^k % mod
+    for (let i = 0; i < k; i++) {
+        powerK = (powerK * p) % mod;
+    }
+
+    for (let i = n - 1; i >= 0; i--) {
+        let val = BigInt(s.charCodeAt(i) - 96);
+
+        hash = (hash * p + val) % mod;
+
+        if (i + k < n) {
+            let removeVal = BigInt(s.charCodeAt(i + k) - 96);
+            hash = (hash - (removeVal * powerK) % mod + mod) % mod;
+        }
+
+        if (n - i >= k && hash === target) {
+            resultIndex = i;
+        }
+    }
+
+    return s.substring(resultIndex, resultIndex + k);
+};
+
+----------------------------------------------------------
+
+
+Problem-
+Given string s, find substring of length k
+Hash formula:
+- (val(s[0]) * p^0 + val(s[1]) * p^1 + ... ) % modulo
+Return first substring with given hashValue
+
+Key Idea-
+Compute hash efficiently using sliding window
+Traverse from right to left to maintain powers easily
+
+Important Trick-
+Reverse sliding window
+Maintain rolling hash:
+-Remove last character
+-Add new character at front
+
+Steps-
+Precompute powerK = p^k % modulo
+Initialize:
+-hash = 0
+-resultIndex = 0
+Traverse from right to left:
+-Add current char to hash
+-If window size > k:
+   -Remove extra character
+If window size == k:
+ -If hash == target:
+    -update result index
