@@ -1,0 +1,54 @@
+https://leetcode.com/problems/array-nesting/submissions/1979297432
+
+Pattern- Vosited Array/Cycle detection
+
+Code-
+
+var arrayNesting = function(nums) {
+    let n = nums.length;
+    let visited = new Array(n).fill(false);
+    let maxLen = 0;
+
+    for (let i = 0; i < n; i++) {
+        if (!visited[i]) {
+            let count = 0;
+            let current = i;
+
+            while (!visited[current]) {
+                visited[current] = true;
+                current = nums[current];
+                count++;
+            }
+
+            maxLen = Math.max(maxLen, count);
+        }
+    }
+
+    return maxLen;
+};
+
+
+
+Problem-
+Given permutation array nums
+Build set:
+- nums[k] → nums[nums[k]] → ...
+Stop when element repeats
+Return maximum size of such set
+
+Key Idea-
+- Each index forms a cycle
+- Traverse cycle and count length
+- Mark visited to avoid recomputation
+
+Steps-
+Create visited array (size n, initialized false)
+Initialize maxLen = 0
+For each index i:
+-If not visited:
+  -Start from i
+  -Traverse until visited:
+   -mark visited
+   -move to next = nums[current]
+   -count length
+-Update maxLen
