@@ -60,3 +60,6 @@ Day-18: 13/04/26 (Pattern - Greedy  + Sorting )
 Day-19: 14/04/26
 - Array Nesting
 - Find substring with given hash value
+
+Day-20: 15/04/26
+- Number of great partition
