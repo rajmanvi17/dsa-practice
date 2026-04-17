@@ -63,3 +63,7 @@ Day-19: 14/04/26
 
 Day-20: 15/04/26
 - Number of great partition
+
+Day-21: 16/04/26
+- Number of recent calls
+- Sum of matrix after queries
