@@ -1,0 +1,33 @@
+https://leetcode.com/problems/sum-of-matrix-after-queries/submissions/1981146854
+
+Pattern- Greedy + Reverse Processing + Hashing
+
+Code-
+
+var matrixSumQueries = function(n, queries) {
+    let visitedRows = new Set();
+    let visitedCols = new Set();
+
+    let rowCount = 0, colCount = 0;
+    let sum = 0;
+
+    for (let i = queries.length - 1; i >= 0; i--) {
+        let [type, index, val] = queries[i];
+
+        if (type === 0) {
+            if (!visitedRows.has(index)) {
+                sum += (n - colCount) * val;
+                visitedRows.add(index);
+                rowCount++;
+            }
+        } else {
+            if (!visitedCols.has(index)) {
+                sum += (n - rowCount) * val;
+                visitedCols.add(index);
+                colCount++;
+            }
+        }
+    }
+
+    return sum;
+};
