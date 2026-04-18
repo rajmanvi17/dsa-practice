@@ -67,3 +67,7 @@ Day-20: 15/04/26
 Day-21: 16/04/26
 - Number of recent calls
 - Sum of matrix after queries
+
+Day-22: 17/04/26
+- Array Partition
+- Restore the array
