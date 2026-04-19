@@ -1,0 +1,30 @@
+https://leetcode.com/problems/hash-divided-string/submissions/1982821695
+
+Code-
+
+var stringHash = function(s, k) {
+    let result = "";
+
+    for (let i = 0; i < s.length; i += k) {
+        let sum = 0;
+
+        for (let j = i; j < i + k; j++) {
+            sum += s.charCodeAt(j) - 97;
+        }
+
+        let val = sum % 26;
+        result += String.fromCharCode(val + 97);
+    }
+
+    return result;
+};
+
+----------------------------------------------
+Key Idea-
+-Process string in chunks of size k
+-Compute sum and map to character
+----------------------------------------------
+
+Complexity-
+-Time: O(n)
+-Space: O(n/k)
