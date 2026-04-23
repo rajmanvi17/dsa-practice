@@ -1,0 +1,36 @@
+https://leetcode.com/problems/valid-anagram/submissions/1986292096
+
+Code-
+
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) return false;
+
+    let freq = new Array(26).fill(0);
+
+    for (let i = 0; i < s.length; i++) {
+        freq[s.charCodeAt(i) - 97]++;
+        freq[t.charCodeAt(i) - 97]--;
+    }
+
+    for (let count of freq) {
+        if (count !== 0) return false;
+    }
+
+    return true;
+};
+
+-------------------------
+
+Key Idea-
+Count frequency of characters in both strings
+Compare counts
+
+-------------------------
+
+Steps-
+If lengths differ → return false
+Create frequency array/map
+Traverse s → increment count
+Traverse t → decrement count
+If any count ≠ 0 → return false
+Else → return true
