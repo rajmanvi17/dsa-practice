@@ -1,0 +1,29 @@
+https://leetcode.com/problems/custom-sort-string/submissions/1989606211
+
+Code-
+
+var customSortString = function(order, s) {
+    let freq = {};
+
+    // count frequency
+    for (let ch of s) {
+        freq[ch] = (freq[ch] || 0) + 1;
+    }
+
+    let result = "";
+
+    // follow custom order
+    for (let ch of order) {
+        if (freq[ch]) {
+            result += ch.repeat(freq[ch]);
+            delete freq[ch];
+        }
+    }
+
+    // add remaining characters
+    for (let ch in freq) {
+        result += ch.repeat(freq[ch]);
+    }
+
+    return result;
+};
