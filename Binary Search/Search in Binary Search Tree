@@ -1,0 +1,19 @@
+https://leetcode.com/problems/search-in-a-binary-search-tree/submissions/1991247781
+
+Code-
+
+var searchBST = function(root, val) {
+    let current = root;
+
+    while (current) {
+        if (current.val === val) {
+            return current;
+        } else if (val < current.val) {
+            current = current.left;
+        } else {
+            current = current.right;
+        }
+    }
+
+    return null;
+};
