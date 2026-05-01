@@ -1,0 +1,28 @@
+https://leetcode.com/problems/longest-palindromic-substring/submissions/1992777986
+
+Code-
+
+var longestPalindrome = function(s) {
+    let start = 0, maxLen = 0;
+
+    function expand(left, right) {
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
+            let len = right - left + 1;
+
+            if (len > maxLen) {
+                start = left;
+                maxLen = len;
+            }
+
+            left--;
+            right++;
+        }
+    }
+
+    for (let i = 0; i < s.length; i++) {
+        expand(i, i);       // odd
+        expand(i, i + 1);   // even
+    }
+
+    return s.substring(start, start + maxLen);
+};
