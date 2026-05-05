@@ -1,0 +1,36 @@
+https://leetcode.com/problems/constrained-subsequence-sum/submissions/1995943041
+
+Code-
+
+var constrainedSubsetSum = function(nums, k) {
+    let n = nums.length;
+    let dp = new Array(n);
+    let deque = [];
+
+    let maxSum = -Infinity;
+
+    for (let i = 0; i < n; i++) {
+
+        // remove out of window
+        if (deque.length && deque[0] < i - k) {
+            deque.shift();
+        }
+
+        // compute dp
+        dp[i] = nums[i];
+        if (deque.length) {
+            dp[i] = Math.max(dp[i], nums[i] + dp[deque[0]]);
+        }
+
+        maxSum = Math.max(maxSum, dp[i]);
+
+        // maintain decreasing deque
+        while (deque.length && dp[deque[deque.length - 1]] <= dp[i]) {
+            deque.pop();
+        }
+
+        deque.push(i);
+    }
+
+    return maxSum;
+};
