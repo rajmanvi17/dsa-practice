@@ -1,0 +1,49 @@
+https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/submissions/2014835914
+
+Pattern- BS on Amswer
+
+Code-
+
+var minDays = function(bloomDay, m, k) {
+
+    // impossible case
+    if (m * k > bloomDay.length) {
+        return -1;
+    }
+
+    let left = Math.min(...bloomDay);
+    let right = Math.max(...bloomDay);
+
+    function canMake(day) {
+        let bouquets = 0;
+        let flowers = 0;
+
+        for (let bloom of bloomDay) {
+
+            if (bloom <= day) {
+                flowers++;
+
+                if (flowers === k) {
+                    bouquets++;
+                    flowers = 0;
+                }
+            } else {
+                flowers = 0;
+            }
+        }
+
+        return bouquets >= m;
+    }
+
+    while (left < right) {
+        let mid = Math.floor((left + right) / 2);
+
+        if (canMake(mid)) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+
+    return left;
+};
