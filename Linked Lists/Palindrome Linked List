@@ -1,0 +1,42 @@
+https://leetcode.com/problems/palindrome-linked-list/submissions/2028932911
+
+Code-
+
+var isPalindrome = function(head) {
+
+    let slow = head;
+    let fast = head;
+
+    // find middle
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    // reverse second half
+    let prev = null;
+
+    while (slow) {
+        let next = slow.next;
+
+        slow.next = prev;
+        prev = slow;
+        slow = next;
+    }
+
+    // compare halves
+    let first = head;
+    let second = prev;
+
+    while (second) {
+
+        if (first.val !== second.val) {
+            return false;
+        }
+
+        first = first.next;
+        second = second.next;
+    }
+
+    return true;
+};
