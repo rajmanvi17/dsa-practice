@@ -1,0 +1,27 @@
+function gcdSum(nums) {
+    const n = nums.length;
+
+    function gcd(a, b) {
+        while (b) { [a, b] = [b, a % b]; }
+        return a;
+    }
+
+    const prefixGcd = new Array(n);
+    let mx = -Infinity;
+    for (let i = 0; i < n; i++) {
+        mx = Math.max(mx, nums[i]);
+        prefixGcd[i] = gcd(nums[i], mx);
+    }
+
+    prefixGcd.sort((a, b) => a - b);
+
+    let sum = 0;
+    let lo = 0, hi = n - 1;
+    while (lo < hi) {
+        sum += gcd(prefixGcd[lo], prefixGcd[hi]);
+        lo++;
+        hi--;
+    }
+
+    return sum;
+}
