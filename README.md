@@ -3,11 +3,10 @@
 This repository contains my daily Data Structures & Algorithms practice.
 
 ## 🎯 Goal
-Solve 150+ DSA problems and become placement-ready.
+Solve 150+ DSA problems.
 
 ## 📌 Platforms
 - LeetCode
-- GeeksforGeeks
 - 
 ## 💡 Approach
 Each problem includes:
@@ -17,4 +16,3 @@ Each problem includes:
 
 ---
 
-🔥 Consistency is the key!
