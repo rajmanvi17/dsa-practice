@@ -1,0 +1,24 @@
+function shiftGrid(grid, k) {
+    const m = grid.length;
+    const n = grid[0].length;
+    const total = m * n;
+    const flat = new Array(total);
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            flat[i * n + j] = grid[i][j];
+        }
+    }
+
+    const shift = k % total;
+    const result = Array.from({ length: m }, () => new Array(n));
+
+    for (let idx = 0; idx < total; idx++) {
+        const newIdx = (idx + shift) % total;
+        const i = Math.floor(newIdx / n);
+        const j = newIdx % n;
+        result[i][j] = flat[idx];
+    }
+
+    return result;
+}
